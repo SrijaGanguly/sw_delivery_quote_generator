@@ -3,7 +3,7 @@ from unittest.mock import patch, Mock
 
 from quote_generator_api.utility import get_resource_data, convert_to_df, convert_df_to_json, concat_df, filter_df
 
-def test_get_data(mock_get_api_response, mock_data):
+def test_get_resource_data(mock_get_api_response, mock_data):
     with patch("quote_generator_api.utility.requests.get") as response:
         response.return_value = Mock(status_code=200)
         response.return_value.json.return_value = mock_get_api_response

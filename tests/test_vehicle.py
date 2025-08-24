@@ -1,12 +1,10 @@
-import pandas as pd
-
 from quote_generator_api import vehicle
 from quote_generator_api.vehicle import *
 from unittest.mock import patch
 
 
 def test_pull_vehicle_data(mock_data):
-    with patch("quote_generator_api.vehicle.get_data", return_value=mock_data):
+    with patch("quote_generator_api.vehicle.get_resource_data", return_value=mock_data):
         actual_data = vehicle.pull_vehicle_data("Sand Crawler")
     expected_output = mock_data
     assert actual_data == expected_output

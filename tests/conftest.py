@@ -78,3 +78,7 @@ def mock_get_api_response():
     "github": "https://github.com/semperry/swapi/blob/main/CONTRIBUTORS.md"
   }
 }
+
+@pytest.fixture(scope="module")
+def mock_overview_response():
+    return [{'uid': '4', 'name': 'Sand Crawler', 'url': 'https://www.swapi.tech/api/vehicles/4'}, {'uid': '7', 'name': 'X-34 landspeeder', 'url': 'https://www.swapi.tech/api/vehicles/7'}, {'uid': '6', 'name': 'T-16 skyhopper', 'url': 'https://www.swapi.tech/api/vehicles/6'}, {'uid': '8', 'name': 'TIE/LN starfighter', 'url': 'https://www.swapi.tech/api/vehicles/8'},{'uid': '14', 'name': 'Snowspeeder', 'url': 'https://www.swapi.tech/api/vehicles/14'}]

@@ -2,11 +2,12 @@
 import requests
 import pandas as pd
 
+#todo optimize common code statements
 def get_resource_data(url):
     """
     common helper to fetch properties list from swapi.tech response of individual object
-    :param url: Almost always a string represnting the hostname
-    :return: List of "properties" within the "request" block in the response Or None
+    :param url: Almost always a string represnting the hostname and the api location
+    :return: List of "properties" within the "result" block in the response Or None
     """
     try:
         api_url = url
@@ -15,6 +16,21 @@ def get_resource_data(url):
         data = response.json()["result"]
         properties = [element['properties'] for element in data]
         return properties
+    except requests.exceptions.RequestException as err:
+        print(err)
+        return None
+
+def get_overview_json(url):
+    """
+    common helper to fetch overview data from swapi.tech for a resource
+    :param url: string representing the hostname and the api location
+    :return: list of json data of "results" block in the response Or None
+    """
+    try:
+        api_url = url
+        response = requests.get(api_url)
+        response.raise_for_status()
+        return response.json()["results"]
     except requests.exceptions.RequestException as err:
         print(err)
         return None
