@@ -1,8 +1,8 @@
 {
     "sales_input": [
         {
-            "vehicles_list": "Sand Crawler,TIE/LN starfighter,T-16 skyhopper,X-34 landspeeder",
-            "distance_to_deliver_mglt": "300"
+            "vehicles_list": "Sand Crawler",
+            "distance_to_deliver_mglt": "200"
         }
     ],
     "cheapest_starship_quote": [
@@ -11,8 +11,8 @@
             "model": "Sentinel-class landing craft",
             "min_crew": "5",
             "MGLT": "70",
-            "num_days_to_travel": "0.17857142857142858",
-            "cost_of_credits_delivery": "89.28571428571429"
+            "num_days_to_travel": "0.11904761904761905",
+            "cost_of_credits_delivery": "59.523809523809526"
         }
     ],
     "fastest_starship_quote": [
@@ -21,8 +21,8 @@
             "model": "Sentinel-class landing craft",
             "min_crew": "5",
             "MGLT": "70",
-            "num_days_to_travel": "0.17857142857142858",
-            "cost_of_credits_delivery": "89.28571428571429"
+            "num_days_to_travel": "0.11904761904761905",
+            "cost_of_credits_delivery": "59.523809523809526"
         }
     ],
     "recommended_upsell_starship_quote": [

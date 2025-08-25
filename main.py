@@ -2,6 +2,7 @@ from quote_generator_api.starship import create_starship_df, calculate_starship_
 from quote_generator_api.vehicle import create_vehicle_df
 from quote_generator_api.utility import convert_to_df, convert_col_to_numeric, write_multiple_df_to_json, sort_df_by_numeric_col
 from quote_generator_api.globals import BASE_QUOTE_FRAMEWORK
+from quote_generator_api.wookie_formatter import convert_to_wookie
 
 def main():
     """
@@ -38,14 +39,14 @@ def main():
         # cheapest starship will have the least cost of credits for delivery
         starship_cost_data_df = sort_df_by_numeric_col(convert_col_to_numeric(starship_cost_data_df, "cost_of_credits_delivery", "cost_of_credits_delivery_num"),
                                                        "cost_of_credits_delivery_num")
-        print("cheapest_sort: {}".format(starship_cost_data_df.to_string()))
+        print("INFO: cheapest_starship_sort: {}".format(starship_cost_data_df.to_string()))
         cheapest_starship_quote_df = starship_cost_data_df.head(1)
         print("INFO: cheapest_starship_quote: {}".format(cheapest_starship_quote_df.to_string()))
 
         # fastest starship will have the largest MGLT value
         starship_cost_data_df = sort_df_by_numeric_col(convert_col_to_numeric(starship_cost_data_df, "MGLT", "MGLT_num"),
                                                        "MGLT_num", ascending=False)
-        print("fastest_sort: {}".format(starship_cost_data_df.to_string()))
+        print("INFO: fastest_starship_sort: {}".format(starship_cost_data_df.to_string()))
         fastest_starship_quote_df = starship_cost_data_df.head(1)
         print("INFO: fastest_starship_quote: {}".format(fastest_starship_quote_df.to_string()))
 
@@ -70,6 +71,8 @@ def main():
 
         # write dataframes to json
         write_multiple_df_to_json([common_quote_df, cheapest_starship_quote_df, fastest_starship_quote_df, recommended_upsell_starship_quote_df], ["sales_input", "cheapest_starship_quote", "fastest_starship_quote", "recommended_upsell_starship_quote"])
+        convert_to_wookie("sales_vehicle_delivery_quote.json")
+        print("INFO: Quotes have been generated in both json and wookie formats in the root directory. Please find the files sales_vehicle_delivery_quote.json and sales_vehicle_delivery_quote_wookie.json")
 
         # user can generate another output
         repeat_quote_generation = input("GENERATE ANOTHER QUOTE FOR SALES? press Y to accept or ANY key to exit ")
