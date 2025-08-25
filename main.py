@@ -70,9 +70,9 @@ def main():
         print("INFO: recommended_upsell_starship_quote: {}".format(recommended_upsell_starship_quote_df.to_string()))
 
         # write dataframes to json
-        write_multiple_df_to_json([common_quote_df, cheapest_starship_quote_df, fastest_starship_quote_df, recommended_upsell_starship_quote_df], ["sales_input", "cheapest_starship_quote", "fastest_starship_quote", "recommended_upsell_starship_quote"])
-        convert_to_wookie("sales_vehicle_delivery_quote.json")
-        print("INFO: Quotes have been generated in both json and wookie formats in the root directory. Please find the files sales_vehicle_delivery_quote.json and sales_vehicle_delivery_quote_wookie.json")
+        write_multiple_df_to_json([common_quote_df, cheapest_starship_quote_df, fastest_starship_quote_df, recommended_upsell_starship_quote_df], ["sales_input", "cheapest_starship_quote", "fastest_starship_quote", "recommended_upsell_starship_quote"], "output/")
+        convert_to_wookie("output/sales_vehicle_delivery_quote.json", "output/")
+        print("INFO: Quotes have been generated in both json and wookie formats in the root directory. \nINFO: Please find the files in output/ directory")
 
         # user can generate another output
         repeat_quote_generation = input("GENERATE ANOTHER QUOTE FOR SALES? press Y to accept or ANY key to exit ")
