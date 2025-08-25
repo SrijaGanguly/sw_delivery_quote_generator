@@ -48,7 +48,7 @@ def find_min_crew(crew):
     elif "-" in crew:
         return crew.split("-")[0]
     else:
-        return "1"
+        return "-1"
 
 
 def calculate_num_days_travel(starship_mglt, distance_mglt):
@@ -72,7 +72,7 @@ def calculate_crew_cost(min_crew, num_days_travel):
     :return: cost of delivery in string
     """
     try:
-        if num_days_travel.isnumeric() or float(num_days_travel):
+        if (num_days_travel.isnumeric() or float(num_days_travel)) and int(min_crew) > 0:
             return str(int(min_crew) * 100 * float(num_days_travel))
         else:
             return "NA"

@@ -1,5 +1,6 @@
 from quote_generator_api.starship import create_starship_df, calculate_starship_delivery_cost_df
-from quote_generator_api.utility import convert_to_df, convert_col_to_numeric, write_multiple_df_to_json
+from quote_generator_api.vehicle import create_vehicle_df
+from quote_generator_api.utility import convert_to_df, convert_col_to_numeric, write_multiple_df_to_json, sort_df_by_numeric_col
 from quote_generator_api.globals import BASE_QUOTE_FRAMEWORK
 
 def main():
@@ -15,10 +16,19 @@ def main():
 
     while generate_another_quote:
         # take user input
-        input_vehicles = input("Enter list of vehicles to deliver (separated by commas): ")
+        input_vehicles = input("Enter list of vehicles to deliver (separated by commas and without space before and after the comma): ")
         input_distance_mglt = input("Enter distance (in MegaLights) to the delivery destination: ")
 
-        # calculate cost of delivery based on input distance to travel and crew presence
+        print("pulling vehicle data.. please wait")
+        vehicle_data_df = create_vehicle_df(input_vehicles.split(","))
+        vehicle_data_df = convert_col_to_numeric(vehicle_data_df, "length", "length_num")
+        # max length of all vehicle should be lesser than the length of a starship
+        vehicle_max_length = vehicle_data_df["length_num"].max()
+        starship_data_df = (convert_col_to_numeric(starship_data_df, "length", "length_num")
+                            .query("length_num > {}".format(vehicle_max_length))
+                            .drop(columns=["length_num"]))
+
+        # calculate cost of delivery based on input distance to travel and crew presence only for the viable starships based on vehicle length
         starship_cost_data_df = calculate_starship_delivery_cost_df(starship_data_df, input_distance_mglt)
 
         # create output dataframes
@@ -26,19 +36,15 @@ def main():
         print("INFO: sales_input: {}".format(common_quote_df.to_string()))
 
         # cheapest starship will have the least cost of credits for delivery
-        starship_cost_data_df = (convert_col_to_numeric(starship_cost_data_df, "cost_of_credits_delivery", "cost_of_credits_delivery_num")
-                                 .sort_values(by='cost_of_credits_delivery_num')
-                                 .reset_index(drop=True)
-                                 .drop(columns='cost_of_credits_delivery_num'))
+        starship_cost_data_df = sort_df_by_numeric_col(convert_col_to_numeric(starship_cost_data_df, "cost_of_credits_delivery", "cost_of_credits_delivery_num"),
+                                                       "cost_of_credits_delivery_num")
         print("cheapest_sort: {}".format(starship_cost_data_df.to_string()))
         cheapest_starship_quote_df = starship_cost_data_df.head(1)
         print("INFO: cheapest_starship_quote: {}".format(cheapest_starship_quote_df.to_string()))
 
         # fastest starship will have the largest MGLT value
-        starship_cost_data_df = (convert_col_to_numeric(starship_cost_data_df, "MGLT", "MGLT_num")
-                                 .sort_values(by='MGLT_num', ascending=False)
-                                 .reset_index(drop=True)
-                                 .drop(columns='MGLT_num'))
+        starship_cost_data_df = sort_df_by_numeric_col(convert_col_to_numeric(starship_cost_data_df, "MGLT", "MGLT_num"),
+                                                       "MGLT_num", ascending=False)
         print("fastest_sort: {}".format(starship_cost_data_df.to_string()))
         fastest_starship_quote_df = starship_cost_data_df.head(1)
         print("INFO: fastest_starship_quote: {}".format(fastest_starship_quote_df.to_string()))
@@ -66,7 +72,7 @@ def main():
         write_multiple_df_to_json([common_quote_df, cheapest_starship_quote_df, fastest_starship_quote_df, recommended_upsell_starship_quote_df], ["sales_input", "cheapest_starship_quote", "fastest_starship_quote", "recommended_upsell_starship_quote"])
 
         # user can generate another output
-        repeat_quote_generation = input("GENERATE ANOTHER QUOTE FOR SALES? press Y to accept or ANY key to exit")
+        repeat_quote_generation = input("GENERATE ANOTHER QUOTE FOR SALES? press Y to accept or ANY key to exit ")
         if repeat_quote_generation not in ["Y", "y"]:
             generate_another_quote = False
 

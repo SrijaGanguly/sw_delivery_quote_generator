@@ -85,6 +85,20 @@ def convert_col_to_numeric(df, orig_col, new_col):
     df.loc[:, new_col] = pd.to_numeric(df[orig_col], errors="coerce")
     return df
 
+def sort_df_by_numeric_col(df, sort_by, ascending=True):
+    """
+    function to sort dataframe by temporary numeric column while resetting index and then the numeric column is dropped
+    :param df: dataframe to sort with the data
+    :param sort_by: column name to sort by
+    :param ascending: sort in ascending or descending
+    :return:
+    """
+    df = (df
+          .sort_values(by=sort_by, ascending=ascending)
+          .reset_index(drop=True)
+          .drop(columns=sort_by))
+    return df
+
 def write_multiple_df_to_json(df_list: list[pd.DataFrame], key_list: list[str], file_path=""):
     """
     function to write multiple dataframes to json with key values for each block of data
