@@ -1,0 +1,48 @@
+{
+    "mock_data": [
+        {
+            "created": "2025-08-23T20:11:48.569Z",
+            "edited": "2025-08-23T20:11:48.569Z",
+            "consumables": "2 months",
+            "name": "Sand Crawler",
+            "cargo_capacity": "50000",
+            "passengers": "30",
+            "max_atmosphering_speed": "30",
+            "crew": "46",
+            "length": "36.8 ",
+            "model": "Digger Crawler",
+            "cost_in_credits": "150000",
+            "manufacturer": "Corellia Mining Corporation",
+            "vehicle_class": "wheeled",
+            "pilots": [],
+            "films": [
+                "https://www.swapi.tech/api/films/1",
+                "https://www.swapi.tech/api/films/5"
+            ],
+            "url": "https://www.swapi.tech/api/vehicles/4"
+        }
+    ],
+    "another_mock_data": [
+        {
+            "created": "2025-08-23T20:11:48.569Z",
+            "edited": "2025-08-23T20:11:48.569Z",
+            "consumables": "2 months",
+            "name": "Sand Crawler Test",
+            "cargo_capacity": "90000",
+            "passengers": "30",
+            "max_atmosphering_speed": "30",
+            "crew": "46",
+            "length": "36.8 ",
+            "model": "Digger Crawler",
+            "cost_in_credits": "150000",
+            "manufacturer": "Corellia Mining Corporation",
+            "vehicle_class": "wheeled",
+            "pilots": [],
+            "films": [
+                "https://www.swapi.tech/api/films/1",
+                "https://www.swapi.tech/api/films/5"
+            ],
+            "url": "https://www.swapi.tech/api/vehicles/4"
+        }
+    ]
+}

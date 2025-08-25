@@ -1,0 +1,38 @@
+{
+    "sales_input": [
+        {
+            "vehicles_list": "Sand Crawler",
+            "distance_to_deliver_mglt": "400"
+        }
+    ],
+    "cheapest_starship_quote": [
+        {
+            "name": "A-wing",
+            "model": "RZ-1 A-wing Interceptor",
+            "min_crew": "1",
+            "MGLT": "120",
+            "num_days_to_travel": "0.1388888888888889",
+            "cost_of_credits_delivery": "13.88888888888889"
+        }
+    ],
+    "fastest_starship_quote": [
+        {
+            "name": "A-wing",
+            "model": "RZ-1 A-wing Interceptor",
+            "min_crew": "1",
+            "MGLT": "120",
+            "num_days_to_travel": "0.1388888888888889",
+            "cost_of_credits_delivery": "13.88888888888889"
+        }
+    ],
+    "recommended_upsell_starship_quote": [
+        {
+            "name": "",
+            "model": "",
+            "min_crew": "",
+            "MGLT": "",
+            "num_days_to_travel": "",
+            "cost_of_credits_delivery": ""
+        }
+    ]
+}

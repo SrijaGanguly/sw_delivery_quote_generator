@@ -1,8 +1,8 @@
 # This script contains several utility methods that the project depends on
 import requests
+import json
 import pandas as pd
 
-#todo optimize common code statements
 def get_resource_data(url):
     """
     common helper to fetch properties list from swapi.tech response of individual object
@@ -14,8 +14,10 @@ def get_resource_data(url):
         response = requests.get(api_url)
         response.raise_for_status()
         data = response.json()["result"]
-        properties = [element['properties'] for element in data]
-        return properties
+        if isinstance(data, dict):
+            return [data["properties"]]
+        elif isinstance(data, list):
+            return [item["properties"] for item in data if "properties" in item]
     except requests.exceptions.RequestException as err:
         print(err)
         return None
@@ -77,3 +79,23 @@ def filter_df(df, column_name, value, remove_values=False):
         return df[~df[column_name].isin([value])]
     else:
         return df[df[column_name].isin([value])]
+
+def convert_col_to_numeric(df, orig_col, new_col):
+    df = df.copy()
+    df.loc[:, new_col] = pd.to_numeric(df[orig_col], errors="coerce")
+    return df
+
+def write_multiple_df_to_json(df_list: list[pd.DataFrame], key_list: list[str], file_path=""):
+    """
+    function to write multiple dataframes to json with key values for each block of data
+    :param df_list: the list of dataframes to write
+    :param key_list: the list of key values to write for each of the dataframe block
+    :param file_path: the path of the file to write to in json
+    :return: writes to a json file and returns nothing
+    """
+    if len(df_list) != len(key_list):
+        print("Length of df_list and key_list are not equal")
+        return
+    concat_df_with_key = {key: df.to_dict(orient="records") for key, df in zip(key_list, df_list)}
+    with open(file_path+"sales_vehicle_delivery_quote.json", "w") as output_file:
+        json.dump(concat_df_with_key, output_file, indent=4)

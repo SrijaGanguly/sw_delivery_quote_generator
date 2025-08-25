@@ -19,9 +19,62 @@ def another_mock_data():
          'url': 'https://www.swapi.tech/api/vehicles/4'}]
 
 @pytest.fixture(scope="module")
+def mock_starship_data():
+    return [{'created': '2025-08-23T20:11:48.569Z', 'edited': '2025-08-23T20:11:48.569Z', 'consumables': '2 months', 'MGLT': '57',
+         'name': 'Sand Crawler', 'cargo_capacity': '90000', 'passengers': '30', 'max_atmosphering_speed': '30',
+         'crew': '46', 'length': '36.8 ', 'model': 'Digger Crawler', 'cost_in_credits': '150000',
+         'manufacturer': 'Corellia Mining Corporation', 'vehicle_class': 'wheeled', 'pilots': [],
+         'films': ['https://www.swapi.tech/api/films/1', 'https://www.swapi.tech/api/films/5'],
+         'url': 'https://www.swapi.tech/api/vehicles/4'}, {'created': '2025-08-23T20:11:48.569Z', 'edited': '2025-08-23T20:11:48.569Z', 'consumables': '2 months', 'MGLT': '97',
+         'name': 'Sand Crawler 2', 'cargo_capacity': '90000', 'passengers': '30', 'max_atmosphering_speed': '30',
+         'crew': '87-100', 'length': '36.8 ', 'model': 'Digger Crawler', 'cost_in_credits': '150000',
+         'manufacturer': 'Corellia Mining Corporation', 'vehicle_class': 'wheeled', 'pilots': [],
+         'films': ['https://www.swapi.tech/api/films/1', 'https://www.swapi.tech/api/films/5'],
+         'url': 'https://www.swapi.tech/api/vehicles/4'}, {'created': '2025-08-23T20:11:48.569Z', 'edited': '2025-08-23T20:11:48.569Z', 'consumables': '2 months', 'MGLT': '10',
+         'name': 'Sand Crawler 3', 'cargo_capacity': '90000', 'passengers': '30', 'max_atmosphering_speed': '30',
+         'crew': 'unknown', 'length': '36.8 ', 'model': 'Digger Crawler', 'cost_in_credits': '150000',
+         'manufacturer': 'Corellia Mining Corporation', 'vehicle_class': 'wheeled', 'pilots': [],
+         'films': ['https://www.swapi.tech/api/films/1', 'https://www.swapi.tech/api/films/5'],
+         'url': 'https://www.swapi.tech/api/vehicles/4'}, {'created': '2025-08-23T20:11:48.569Z', 'edited': '2025-08-23T20:11:48.569Z', 'consumables': '2 months', 'MGLT': '87',
+         'name': 'Sand Crawler 4', 'cargo_capacity': '90000', 'passengers': '30', 'max_atmosphering_speed': '30',
+         'crew': '102,100', 'length': '36.8 ', 'model': 'Digger Crawler', 'cost_in_credits': '150000',
+         'manufacturer': 'Corellia Mining Corporation', 'vehicle_class': 'wheeled', 'pilots': [],
+         'films': ['https://www.swapi.tech/api/films/1', 'https://www.swapi.tech/api/films/5'],
+         'url': 'https://www.swapi.tech/api/vehicles/4'}, {'created': '2025-08-23T20:11:48.569Z', 'edited': '2025-08-23T20:11:48.569Z', 'consumables': '2 months', 'MGLT': 'unknown',
+         'name': 'Sand Crawler 5', 'cargo_capacity': '90000', 'passengers': '30', 'max_atmosphering_speed': '30',
+         'crew': '89-100', 'length': '36.8 ', 'model': 'Digger Crawler', 'cost_in_credits': '150000',
+         'manufacturer': 'Corellia Mining Corporation', 'vehicle_class': 'wheeled', 'pilots': [],
+         'films': ['https://www.swapi.tech/api/films/1', 'https://www.swapi.tech/api/films/5'],
+         'url': 'https://www.swapi.tech/api/vehicles/4'} ]
+
+@pytest.fixture(scope="module")
 def mock_vehicle_list():
     vehicle_list = ["Sand Crawler", "Sand Crawler"]
     return vehicle_list
+
+@pytest.fixture(scope="module")
+def mock_data_properties():
+    return  [{
+        "created": "2025-08-23T20:11:48.569Z",
+        "edited": "2025-08-23T20:11:48.569Z",
+        "consumables": "2 months",
+        "name": "Sand Crawler",
+        "cargo_capacity": "50000",
+        "passengers": "30",
+        "max_atmosphering_speed": "30",
+        "crew": "46",
+        "length": "36.8 ",
+        "model": "Digger Crawler",
+        "cost_in_credits": "150000",
+        "manufacturer": "Corellia Mining Corporation",
+        "vehicle_class": "wheeled",
+        "pilots": [],
+        "films": [
+          "https://www.swapi.tech/api/films/1",
+          "https://www.swapi.tech/api/films/5"
+        ],
+        "url": "https://www.swapi.tech/api/vehicles/4"
+      }]
 
 @pytest.fixture(scope="module")
 def mock_get_api_response():
