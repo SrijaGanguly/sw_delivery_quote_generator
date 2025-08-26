@@ -56,10 +56,10 @@ def calculate_num_days_travel(starship_mglt, distance_mglt):
     function to calculate the number of days travel using the distance in MegaLights as input
     :param distance_mglt: distance in MegaLights as input
     :param starship_mglt: mglt property associated to starship as max speed
-    :return: number of days to travel in string
+    :return: number of days to travel in string in Earth hours where 24 hours is 1 day
     """
-    if starship_mglt.isnumeric() and int(starship_mglt) > 0:
-        days_travel = (int(distance_mglt) / int(starship_mglt))
+    if starship_mglt.isnumeric() and float(starship_mglt) > 0:
+        days_travel = (float(distance_mglt) / float(starship_mglt))*2
         return str(days_travel / 24)
     else:
         return "NA"

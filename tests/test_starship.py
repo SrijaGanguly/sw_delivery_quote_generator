@@ -46,7 +46,7 @@ def test_create_starship_df(mock_data, another_mock_data):
 def test_calculate_num_days_travel_numeric_inputs():
     starship_mglt = "40"
     distance_mglt_input = "100"
-    expected_num_days_travel = (int(distance_mglt_input)/int(starship_mglt))/24
+    expected_num_days_travel = (float(distance_mglt_input)/float(starship_mglt))/12
     assert calculate_num_days_travel(starship_mglt, distance_mglt_input) == str(expected_num_days_travel)
 
 def test_calculate_num_days_travel_unknown_inputs():
@@ -59,6 +59,12 @@ def test_calculate_num_days_travel_negative_inputs():
     starship_mglt = "-2"
     distance_mglt_input = "100"
     expected_num_days_travel = "NA"
+    assert calculate_num_days_travel(starship_mglt, distance_mglt_input) == str(expected_num_days_travel)
+
+def test_calculate_num_days_travel_float_inputs():
+    starship_mglt = "200"
+    distance_mglt_input = "300.2"
+    expected_num_days_travel = (float(distance_mglt_input)/float(starship_mglt))/12
     assert calculate_num_days_travel(starship_mglt, distance_mglt_input) == str(expected_num_days_travel)
 
 

@@ -17,11 +17,12 @@ def main():
 
     while generate_another_quote:
         # take user input
-        input_vehicles = input("Enter list of vehicles to deliver (separated by commas and without space before and after the comma): ")
+        input_vehicles = input("Enter list of vehicles to deliver (separated by commas): ")
         input_distance_mglt = input("Enter distance (in MegaLights) to the delivery destination: ")
 
         print("pulling vehicle data.. please wait")
-        vehicle_data_df = create_vehicle_df(input_vehicles.split(","))
+        vehicle_list = input_vehicles.split(",")
+        vehicle_data_df = create_vehicle_df([s.strip() for s in vehicle_list])
         vehicle_data_df = convert_col_to_numeric(vehicle_data_df, "length", "length_num")
         # max length of all vehicle should be lesser than the length of a starship
         vehicle_max_length = vehicle_data_df["length_num"].max()

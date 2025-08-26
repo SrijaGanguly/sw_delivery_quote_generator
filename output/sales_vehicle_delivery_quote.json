@@ -2,7 +2,7 @@
     "sales_input": [
         {
             "vehicles_list": "Sand Crawler",
-            "distance_to_deliver_mglt": "300"
+            "distance_to_deliver_mglt": "200.9000"
         }
     ],
     "cheapest_starship_quote": [
@@ -11,8 +11,8 @@
             "model": "Sentinel-class landing craft",
             "min_crew": "5",
             "MGLT": "70",
-            "num_days_to_travel": "0.17857142857142858",
-            "cost_of_credits_delivery": "89.28571428571429"
+            "num_days_to_travel": "0.23916666666666667",
+            "cost_of_credits_delivery": "119.58333333333333"
         }
     ],
     "fastest_starship_quote": [
@@ -21,8 +21,8 @@
             "model": "Sentinel-class landing craft",
             "min_crew": "5",
             "MGLT": "70",
-            "num_days_to_travel": "0.17857142857142858",
-            "cost_of_credits_delivery": "89.28571428571429"
+            "num_days_to_travel": "0.23916666666666667",
+            "cost_of_credits_delivery": "119.58333333333333"
         }
     ],
     "recommended_upsell_starship_quote": [
