@@ -19,6 +19,32 @@ def another_mock_data():
          'url': 'https://www.swapi.tech/api/vehicles/4'}]
 
 @pytest.fixture(scope="module")
+def negative_mock_data():
+    return [{"message": "ok",
+  "result": [],
+  "apiVersion": "1.0",
+  "timestamp": "2025-08-26T16:44:34.033Z",
+  "support": {
+    "contact": "admin@swapi.tech",
+    "donate": "https://www.paypal.com/donate/?business=2HGAUVTWGR5T2&no_recurring=0&item_name=Support+Swapi+and+keep+the+galaxy%27s+data+free%21+Your+donation+fuels+open-source+innovation+and+helps+us+grow.+Thank+you%21+%F0%9F%9A%80&currency_code=USD",
+    "partnerDiscounts": {
+      "saberMasters": {
+        "link": "https://www.swapi.tech/partner-discount/sabermasters-swapi",
+        "details": "Use this link to automatically get $10 off your purchase!"
+      },
+      "heartMath": {
+        "link": "https://www.heartmath.com/ryanc",
+        "details": "Looking for some Jedi-like inner peace? Take 10% off your heart-brain coherence tools from the HeartMath Institute!"
+      }
+    }
+  },
+  "social": {
+    "discord": "https://discord.gg/zWvA6GPeNG",
+    "reddit": "https://www.reddit.com/r/SwapiOfficial/",
+    "github": "https://github.com/semperry/swapi/blob/main/CONTRIBUTORS.md"
+  }}]
+
+@pytest.fixture(scope="module")
 def mock_starship_data():
     return [{'created': '2025-08-23T20:11:48.569Z', 'edited': '2025-08-23T20:11:48.569Z', 'consumables': '2 months', 'MGLT': '57',
          'name': 'Sand Crawler', 'cargo_capacity': '90000', 'passengers': '30', 'max_atmosphering_speed': '30',

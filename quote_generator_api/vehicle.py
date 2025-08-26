@@ -23,6 +23,11 @@ def create_vehicle_df(vehicle_name_list):
     df = pd.DataFrame()
     for vehicle in vehicle_name_list:
         vehicle_data = pull_vehicle_data(vehicle)
-        if vehicle_data is not None:
+        if vehicle_data is not None and 'name' in convert_to_df(vehicle_data).columns:
             df = concat_df(df, convert_to_df(vehicle_data))
-    return df[["name","length"]]
+        else:
+            print("WARNING: Vehicle {} does not exist".format(vehicle))
+    if len(df) > 0:
+        return df[["name","length"]]
+    else:
+        return pd.DataFrame()

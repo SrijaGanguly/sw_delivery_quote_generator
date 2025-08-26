@@ -259,6 +259,7 @@ Output is stored in Json format. The structure is below:
    - Then it will ask for the distance to deliver in MegaLights. Enter a number as represented below:
       ```text
       Enter distance (in MegaLights) to the delivery destination: 500 
+      ```
 6. Following the inputs, there will be console output of data analysis and quotes will be available on the host in `output/` directory in the current location
 
 ## Output File Description
