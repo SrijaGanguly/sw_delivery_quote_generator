@@ -17,8 +17,13 @@ def main():
 
     while generate_another_quote:
         # take user input
-        input_vehicles = input("Enter list of vehicles to deliver (separated by commas): ")
-        input_distance_mglt = input("Enter distance (in MegaLights) to the delivery destination: ")
+        while True:
+            input_vehicles = input("Enter list of vehicles to deliver (separated by commas): ")
+            input_distance_mglt = input("Enter distance (in MegaLights) to the delivery destination: ")
+            if input_vehicles and input_distance_mglt:
+                break
+            else:
+                print("ERROR: Please enter the inputs asked")
 
         print("pulling vehicle data.. please wait")
         vehicle_list = input_vehicles.split(",")

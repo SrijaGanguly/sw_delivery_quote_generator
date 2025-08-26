@@ -49,6 +49,7 @@ Some considerations were made to design the algorithm:
 5. The quote in question also does not have costs associated with “purchasing” the vehicles because the requirement clearly stated this is a delivery business.
 6. If crew is not mentioned then it's considered to carry 1 minimum crew member.
 7. MGLT of starships is used to calculate days of travel and if its unknown we don’t include that in our quote.
+8. If any vehicle name does not exist in the api database it won't have data associated with it and will simply not be considered in the calculation yet for simplicity it will be included as user input in the quote file.
 
 ### Data Flow
 1. The application pulls all the starship data from the website once at the start.
